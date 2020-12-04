@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import http from "http";
 import appConfig from "./config/AppConfig";
 import path from "path";
+const PORT: string | number = process.env.PORT || 3333;
 
 import { WebSocketConfig } from "./config/WebSocket";
 
@@ -24,4 +25,4 @@ appConfig.forEach((config) => {
    app.use(config);
 });
 
-server.listen(3333);
+server.listen(PORT);
