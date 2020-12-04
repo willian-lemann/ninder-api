@@ -3,6 +3,12 @@ import mongoose from "mongoose";
 import http from "http";
 import appConfig from "./config/AppConfig";
 import path from "path";
+import * as dotenv from 'dotenv';
+
+dotenv.config({
+   path: process.env.NODE_ENV === 'dev' ? 'src/.env.local' : 'src/.env'
+})
+
 const PORT: string | number = process.env.PORT || 3333;
 
 import { WebSocketConfig } from "./config/WebSocket";
@@ -11,9 +17,8 @@ const app = express();
 const server = new http.Server(app);
 
 WebSocketConfig(server);
-
-mongoose.connect(
-   "mongodb+srv://willianlemann:American1995@ninder.ag4q2.mongodb.net/ninder-dev?retryWrites=true&w=majority",
+ 
+mongoose.connect(`${process.env.CONNECTION_STRING}`,
    {
       useNewUrlParser: true,
       useUnifiedTopology: true,
