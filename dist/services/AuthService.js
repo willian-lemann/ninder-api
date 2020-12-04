@@ -51,7 +51,7 @@ class AuthService {
         if (!isCompared)
             return response.status(400).json({ error: "Invalid password." });
         user.password = undefined;
-        const token = GenerateToken({ id: user.id });
+        const token = GenerateToken({ id: Number(user.id) });
         return response.status(200).json({
             user,
             token,
