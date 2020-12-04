@@ -18,7 +18,6 @@ const server = new http.Server(app);
 
 WebSocketConfig(server);
 
-console.log(process.env.CONNECTION_STRING)
 mongoose.connect(`${process.env.CONNECTION_STRING}`,
    {
       useNewUrlParser: true,

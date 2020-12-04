@@ -6,7 +6,8 @@
    "scripts": {
       "build": "tsc",
       "start": "node dist/server.js",
-      "dev": "tsnd --inspect --transpile-only --ignore-watch node_modules --respawn --no-notify src/server.ts"
+      "dev": "tsnd --inspect --transpile-only --ignore-watch node_modules --respawn --no-notify src/server.ts",
+      "deploy":"IF EXIST dist (rm -rv dist && tsc) ELSE (tsc) && git push origin master"
    },
    "dependencies": {
       "@types/bcrypt": "^3.0.0",

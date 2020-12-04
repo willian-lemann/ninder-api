@@ -29,7 +29,6 @@ class AuthService {
                 coordinates: [0, 0],
             };
             const data = Object.assign(Object.assign({}, newUser), { image_url: image.filename, location });
-            console.log(data);
             await authRepository.Register(data);
             newUser.password = undefined;
             const token = GenerateToken({ id: newUser.id });

@@ -43,9 +43,7 @@ class AuthService {
             image_url: image.filename,
             location,
          };
-
-         console.log(data);
-
+         
          await authRepository.Register(data);
 
          newUser.password = undefined;
