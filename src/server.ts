@@ -7,9 +7,9 @@ import * as dotenv from 'dotenv';
 
 dotenv.config({
    path: process.env.NODE_ENV === 'dev' ? 'src/.env.local' : 'src/.env'
-})
+});
 
-const PORT: string | number = process.env.PORT || 3333;
+const PORT = process.env.PORT || 3333;
 
 import { WebSocketConfig } from "./config/WebSocket";
 
@@ -17,7 +17,8 @@ const app = express();
 const server = new http.Server(app);
 
 WebSocketConfig(server);
- 
+
+console.log(process.env.CONNECTION_STRING)
 mongoose.connect(`${process.env.CONNECTION_STRING}`,
    {
       useNewUrlParser: true,
