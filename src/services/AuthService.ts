@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import { secret, expiresIn } from "../config/auth.json";
+import { secret, expiresIn } from "../config/Auth.json";
 
 import AuthRepository from "../repository/AuthRepository";
 

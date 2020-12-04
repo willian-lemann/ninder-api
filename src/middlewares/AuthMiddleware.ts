@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import jwt, { JsonWebTokenError } from 'jsonwebtoken';
-import { secret } from '../config/auth.json';
+import { secret } from '../config/Auth.json';
 
 export = (request: Request, response: Response, next: NextFunction) => {
    const authHeader = request.headers.authorization;
