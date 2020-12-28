@@ -23,6 +23,7 @@ export = (request: Request, response: Response, next: NextFunction) => {
       if (error)
          return response.status(401).json({ error: 'Token invalid.' });
 
+      console.log(decoded.id)
       request.body.user_id = decoded.id;
 
       return next();

@@ -11,8 +11,8 @@ interface tokenParams {
    id: number;
 }
 
-const GenerateToken = (params: tokenParams) => {
-   return jwt.sign(params, secret, {
+const GenerateToken = (params: tokenParams) => { 
+   return jwt.sign({ id: params.id }, secret, {
       expiresIn,
    });
 };
@@ -43,12 +43,12 @@ class AuthService {
             image_url: image.filename,
             location,
          };
-         
-         await authRepository.Register(data);
+
+         const registeredUser = await authRepository.Register(data);
 
          newUser.password = undefined;
 
-         const token = GenerateToken({ id: newUser.id });
+         const token = GenerateToken({ id: registeredUser._id });
 
          return response.json({
             newUser,
@@ -76,7 +76,7 @@ class AuthService {
 
       user.password = undefined;
 
-      const token = GenerateToken({ id: Number(user.id) });
+      const token = GenerateToken({ id: user._id });
 
       return response.status(200).json({
          user,
